@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recent_updates",
+  "info": {
+    "singularName": "recent-update",
+    "pluralName": "recent-updates",
+    "displayName": "RecentUpdates"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": "Enter the title",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": "Enter the description",
+      "required": true
+    },
+    "data": {
+      "type": "date",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}
