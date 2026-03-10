@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tenkasi_union_and_town_secretaries",
+  "info": {
+    "singularName": "tenkasi-union-and-town-secretary",
+    "pluralName": "tenkasi-union-and-town-secretaries",
+    "displayName": "unionAndTown"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "union_and_town_secretary_members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::union-and-town-secretary-member.union-and-town-secretary-member"
+    }
+  }
+}

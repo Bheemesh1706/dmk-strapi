@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "party_wings",
+  "info": {
+    "singularName": "party-wing",
+    "pluralName": "party-wings",
+    "displayName": "partyWing"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "wingName": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "wing_memebers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::wing-memeber.wing-memeber"
+    }
+  }
+}
