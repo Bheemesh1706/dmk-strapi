@@ -32,6 +32,19 @@
         }
       },
       "required": true
+    },
+    "region": {
+      "type": "enumeration",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true,
+      "enum": [
+        "region1",
+        "region2"
+      ]
     }
   }
 }

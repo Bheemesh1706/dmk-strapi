@@ -645,6 +645,13 @@ export interface ApiPartyWingPartyWing extends Struct.CollectionTypeSchema {
       'api::party-wing.party-wing'
     >;
     publishedAt: Schema.Attribute.DateTime;
+    region: Schema.Attribute.Enumeration<['region1', 'region2']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -701,6 +708,12 @@ export interface ApiRecentUpdateRecentUpdate
       'oneToMany',
       'api::recent-update.recent-update'
     >;
+    photo: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
@@ -830,6 +843,13 @@ export interface ApiTenkasiUnionAndTownSecretaryTenkasiUnionAndTownSecretary
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    region: Schema.Attribute.Enumeration<['region1', 'region2']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     representative: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -845,68 +865,6 @@ export interface ApiTenkasiUnionAndTownSecretaryTenkasiUnionAndTownSecretary
         };
       }> &
       Schema.Attribute.DefaultTo<'union'>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiTestUnionAcivementTestUnionAcivement
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'test_union_acivements';
-  info: {
-    displayName: 'testUnionAcivement';
-    pluralName: 'test-union-acivements';
-    singularName: 'test-union-acivement';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::test-union-acivement.test-union-acivement'
-    >;
-    photos: Schema.Attribute.Media<'images' | 'files', true> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    publishedAt: Schema.Attribute.DateTime;
-    serviceType: Schema.Attribute.Enumeration<['goverment', 'party', 'self']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    slogans: Schema.Attribute.Enumeration<['slogan1', 'slogan2', 'slogan3']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 50;
-      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -945,6 +903,13 @@ export interface ApiWingMemeberWingMemeber extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    region: Schema.Attribute.Enumeration<['region1', 'region2']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -1478,7 +1443,6 @@ declare module '@strapi/strapi' {
       'api::recent-update.recent-update': ApiRecentUpdateRecentUpdate;
       'api::tenkasi-achievement.tenkasi-achievement': ApiTenkasiAchievementTenkasiAchievement;
       'api::tenkasi-union-and-town-secretary.tenkasi-union-and-town-secretary': ApiTenkasiUnionAndTownSecretaryTenkasiUnionAndTownSecretary;
-      'api::test-union-acivement.test-union-acivement': ApiTestUnionAcivementTestUnionAcivement;
       'api::wing-memeber.wing-memeber': ApiWingMemeberWingMemeber;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

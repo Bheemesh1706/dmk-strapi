@@ -28,6 +28,19 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::wing-memeber.wing-memeber"
+    },
+    "region": {
+      "type": "enumeration",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true,
+      "enum": [
+        "region1",
+        "region2"
+      ]
     }
   }
 }

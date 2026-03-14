@@ -15,13 +15,14 @@
     "upgrade:dry": "npx @strapi/upgrade latest --dry"
   },
   "dependencies": {
+    "@strapi/i18n": "5.38.0",
     "@strapi/plugin-cloud": "5.38.0",
     "@strapi/plugin-documentation": "5.38.0",
-    "@strapi/plugin-i18n": "^4.25.23",
     "@strapi/plugin-users-permissions": "5.38.0",
     "@strapi/provider-upload-aws-s3": "5.38.0",
     "@strapi/strapi": "5.38.0",
     "better-sqlite3": "12.4.1",
+    "prismjs": "1.30.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
@@ -40,5 +41,10 @@
   "strapi": {
     "uuid": "fd1cff4c-6697-473f-9cfc-3db6d48d2c63",
     "installId": "2339773dafbae78a49a1c49e8b6a62b21f18d8aec700fe4b04d1c53b911d9d73"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3"
+    ]
   }
 }
