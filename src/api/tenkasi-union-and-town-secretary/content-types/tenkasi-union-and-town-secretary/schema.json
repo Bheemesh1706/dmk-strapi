@@ -24,10 +24,49 @@
       },
       "required": true
     },
-    "union_and_town_secretary_members": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::union-and-town-secretary-member.union-and-town-secretary-member"
+    "representative": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true,
+      "default": "union",
+      "enum": [
+        "union",
+        "town"
+      ]
+    },
+    "bio": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "image": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     }
   }
 }

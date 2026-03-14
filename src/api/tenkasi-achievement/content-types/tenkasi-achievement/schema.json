@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "union_and_town_secretary_members",
+  "collectionName": "tenkasi_achievements",
   "info": {
-    "singularName": "union-and-town-secretary-member",
-    "pluralName": "union-and-town-secretary-members",
-    "displayName": "unionAndTownMember"
+    "singularName": "tenkasi-achievement",
+    "pluralName": "tenkasi-achievements",
+    "displayName": "tenkasiAchievement"
   },
   "options": {
     "draftAndPublish": true
@@ -15,24 +15,6 @@
     }
   },
   "attributes": {
-    "unionName": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "required": true
-    },
-    "name": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "required": true
-    },
     "title": {
       "type": "string",
       "pluginOptions": {
@@ -42,26 +24,57 @@
       },
       "required": true
     },
-    "profile": {
+    "photos": {
       "type": "media",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "multiple": false,
+      "multiple": true,
       "allowedTypes": [
         "images",
-        "files"
+        "files",
+        "videos",
+        "audios"
       ]
     },
-    "Bio": {
+    "serviceType": {
+      "type": "enumeration",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true,
+      "enum": [
+        "goverment",
+        "party",
+        "self"
+      ]
+    },
+    "slogans": {
+      "type": "enumeration",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true,
+      "enum": [
+        "slogan1",
+        "slogan2",
+        "slogan3"
+      ]
+    },
+    "description": {
       "type": "text",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
     }
   }
 }

@@ -430,6 +430,52 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiDistrictAchievementDistrictAchievement
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'district_achievements';
+  info: {
+    displayName: 'districtAchievement';
+    pluralName: 'district-achievements';
+    singularName: 'district-achievement';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::district-achievement.district-achievement'
+    >;
+    photos: Schema.Attribute.Media<'images' | 'files', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiElectedRepresentativeElectedRepresentative
   extends Struct.CollectionTypeSchema {
   collectionName: 'elected_representatives';
@@ -484,6 +530,35 @@ export interface ApiGalleryGallery extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::gallery.gallery'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiHeroImageHeroImage extends Struct.CollectionTypeSchema {
+  collectionName: 'hero_images';
+  info: {
+    displayName: 'heroImage';
+    pluralName: 'hero-images';
+    singularName: 'hero-image';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    heroImage: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hero-image.hero-image'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
@@ -641,6 +716,75 @@ export interface ApiRecentUpdateRecentUpdate
   };
 }
 
+export interface ApiTenkasiAchievementTenkasiAchievement
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'tenkasi_achievements';
+  info: {
+    displayName: 'tenkasiAchievement';
+    pluralName: 'tenkasi-achievements';
+    singularName: 'tenkasi-achievement';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tenkasi-achievement.tenkasi-achievement'
+    >;
+    photos: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    serviceType: Schema.Attribute.Enumeration<['goverment', 'party', 'self']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slogans: Schema.Attribute.Enumeration<['slogan1', 'slogan2', 'slogan3']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTenkasiUnionAndTownSecretaryTenkasiUnionAndTownSecretary
   extends Struct.CollectionTypeSchema {
   collectionName: 'tenkasi_union_and_town_secretaries';
@@ -658,9 +802,21 @@ export interface ApiTenkasiUnionAndTownSecretaryTenkasiUnionAndTownSecretary
     };
   };
   attributes: {
+    bio: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -674,10 +830,21 @@ export interface ApiTenkasiUnionAndTownSecretaryTenkasiUnionAndTownSecretary
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
-    union_and_town_secretary_members: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::union-and-town-secretary-member.union-and-town-secretary-member'
-    >;
+    representative: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    type: Schema.Attribute.Enumeration<['union', 'town']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'union'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -739,71 +906,6 @@ export interface ApiTestUnionAcivementTestUnionAcivement
       }> &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 50;
-      }>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiUnionAndTownSecretaryMemberUnionAndTownSecretaryMember
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'union_and_town_secretary_members';
-  info: {
-    displayName: 'unionAndTownMember';
-    pluralName: 'union-and-town-secretary-members';
-    singularName: 'union-and-town-secretary-member';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    Bio: Schema.Attribute.Text &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::union-and-town-secretary-member.union-and-town-secretary-member'
-    >;
-    name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    profile: Schema.Attribute.Media<'images' | 'files'> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    unionName: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
       }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1367,14 +1469,16 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::district-achievement.district-achievement': ApiDistrictAchievementDistrictAchievement;
       'api::elected-representative.elected-representative': ApiElectedRepresentativeElectedRepresentative;
       'api::gallery.gallery': ApiGalleryGallery;
+      'api::hero-image.hero-image': ApiHeroImageHeroImage;
       'api::leadership.leadership': ApiLeadershipLeadership;
       'api::party-wing.party-wing': ApiPartyWingPartyWing;
       'api::recent-update.recent-update': ApiRecentUpdateRecentUpdate;
+      'api::tenkasi-achievement.tenkasi-achievement': ApiTenkasiAchievementTenkasiAchievement;
       'api::tenkasi-union-and-town-secretary.tenkasi-union-and-town-secretary': ApiTenkasiUnionAndTownSecretaryTenkasiUnionAndTownSecretary;
       'api::test-union-acivement.test-union-acivement': ApiTestUnionAcivementTestUnionAcivement;
-      'api::union-and-town-secretary-member.union-and-town-secretary-member': ApiUnionAndTownSecretaryMemberUnionAndTownSecretaryMember;
       'api::wing-memeber.wing-memeber': ApiWingMemeberWingMemeber;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
