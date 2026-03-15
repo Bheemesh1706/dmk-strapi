@@ -9,8 +9,20 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Middlewar
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'img-src': ["'self'", 'data:', 'blob:', env('R2_PUBLIC_URL'), env('R2_ENDPOINT')],
-          'media-src': ["'self'", 'data:', 'blob:', env('R2_PUBLIC_URL'), env('R2_ENDPOINT')],
+          'img-src': [
+            "'self'",
+            'data:',
+            'blob:',
+            env('R2_PUBLIC_URL'),
+            env('R2_ENDPOINT'),
+          ],
+          'media-src': [
+            "'self'",
+            'data:',
+            'blob:',
+            env('R2_PUBLIC_URL'),
+            env('R2_ENDPOINT'),
+          ],
           upgradeInsecureRequests: null,
         },
       },
