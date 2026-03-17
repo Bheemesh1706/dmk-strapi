@@ -19,7 +19,7 @@ importers:
         version: 5.38.0(ab2366e49a2366d60abc2e2a91b64f75)
       '@strapi/plugin-users-permissions':
         specifier: 5.38.0
-        version: 5.38.0(e8755e2e9a30746527ac44c97490bd89)
+        version: 5.38.0(344d542301028358e59114af6b99555b)
       '@strapi/provider-email-nodemailer':
         specifier: ^5.39.0
         version: 5.39.0
