@@ -3,6 +3,11 @@ import type { Core } from '@strapi/strapi';
 
 const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Database => {
   const client = env('DATABASE_CLIENT', 'sqlite');
+  const isRender = env.bool('RENDER', false) || Boolean(env('RENDER_SERVICE_ID', ''));
+  const defaultDatabaseUrl = isRender
+    ? env('DATABASE_INTERNAL_URL', env('DATABASE_EXTERNAL_URL'))
+    : env('DATABASE_EXTERNAL_URL', env('DATABASE_INTERNAL_URL'));
+  const databaseUrl = env('DATABASE_URL', defaultDatabaseUrl);
 
   const connections = {
     mysql: {
@@ -25,7 +30,7 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Database 
     },
     postgres: {
       connection: {
-        connectionString: env('DATABASE_URL'),
+        connectionString: databaseUrl,
         host: env('DATABASE_HOST', 'localhost'),
         port: env.int('DATABASE_PORT', 5432),
         database: env('DATABASE_NAME', 'strapi'),
